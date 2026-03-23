@@ -1,0 +1,216 @@
+/* Add space between names and date */
+.names {
+    margin-bottom: 1.2em;
+}
+/* Set ampersand font to Petit Formal Script */
+.ampersand {
+    font-family: 'Petit Formal Script', cursive;
+    font-size: 3rem;
+    line-height: 1;
+}
+/* Set specific fonts for first-name and last-name */
+.first-name {
+    font-family: 'Forum', serif;
+}
+.last-name {
+    font-family: 'Cormorant', serif;
+}
+:root {
+    --background-color: #EAE4DF;
+    --font-color: #000000;
+    --accent-color: #96A085;
+    --header-font: 'Forum', serif;
+    --body-font: 'Cormorant', serif; /* Using substitute font */
+    --details-font: 'Cormorant', serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--font-color);
+    font-family: var(--body-font);
+    margin: 0;
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.tab-nav {
+    padding: 2rem 1rem 0;
+}
+
+.tab-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.tab-nav ul li a {
+    font-family: var(--details-font);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+}
+
+.tab-nav ul li a.active {
+    border-bottom: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+main section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.tab-content > section {
+    border-top: 1px solid #ddd;
+}
+
+#hero {
+    height: 100vh; /* Set hero section to full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 0; /* Remove extra padding */
+    margin: 0; /* Remove extra margin */
+}
+
+.names {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; /* Increased spacing between elements */
+    font-family: 'Cormorant', serif; /* Updated font family */
+    font-size: 2rem; /* Base font size */
+    color: #4a4a4a; /* Neutral dark color */
+}
+
+.name {
+    font-size: 3rem; /* Larger font size for names */
+    font-weight: 700; /* Bold font for names */
+    text-transform: uppercase; /* Uppercase for names */
+}
+
+.ampersand {
+    font-size: 2.5rem; /* Slightly larger font size for ampersand */
+    font-style: italic; /* Italic style for ampersand */
+    color: #4a4a4a; /* Match color with names */
+    margin: 0 1rem; /* Add spacing around the ampersand */
+}
+
+.hero-image {
+    display: block;
+    margin: 0 auto 2rem;
+    max-width: 750px;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero-image:hover {
+    transform: scale(1.02); /* Apply a slight zoom effect */
+}
+
+#where-when .details {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-family: var(--header-font);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-top: 1rem;
+    border: none;
+}
+
+.button:hover {
+    background-color: #838d75; /* A slightly darker shade for hover */
+}
+
+footer {
+    padding: 2rem;
+    font-family: var(--details-font);
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* Styles for first and last names */
+.first-name {
+    font-size: 3rem; /* Larger font size for first names */
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.last-name {
+    font-size: 1.5rem; /* Smaller font size for last names */
+    font-style: italic;
+    font-weight: 400;
+    margin-top: -0.5rem; /* Adjust spacing between first and last names */
+    text-align: center;
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .names {
+        flex-direction: column;
+        gap: 0.5rem; /* Reduce spacing between elements */
+    }
+
+    .name {
+        font-size: 2rem; /* Smaller font size for names */
+    }
+
+    .ampersand {
+        font-size: 2rem; /* Adjust ampersand size */
+        margin: 0; /* Remove extra spacing */
+    }
+
+    .first-name {
+        font-size: 2rem; /* Adjust first name size */
+    }
+
+    .last-name {
+        font-size: 1rem; /* Adjust last name size */
+        margin-top: -0.2rem; /* Adjust spacing between first and last names */
+    }
+
+    #hero {
+        padding: 3rem 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .hero-image {
+        max-width: 100%; /* Ensure image fits within screen */
+    }
+
+    #where-when .details {
+        padding: 1rem;
+    }
+
+    .tab-nav ul {
+        flex-wrap: wrap; /* Allow navigation items to wrap */
+        gap: 1rem; /* Reduce spacing between nav items */
+    }
+
+    .button {
+        padding: 0.8rem 1.5rem; /* Adjust button size */
+        font-size: 1rem; /* Adjust button font size */
+    }
+}
