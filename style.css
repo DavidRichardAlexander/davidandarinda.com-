@@ -1,3 +1,14 @@
+/* Uniform grid image sizing for photo gallery */
+.grid__img.layer {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    background: #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
 
 /* Shimmer effect for hero-image */
 .hero-image-wrapper {

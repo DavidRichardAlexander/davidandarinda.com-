@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A&D | Welcome</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-                .zoom-letter {
-                  z-index: 1000 !important;
-                  transition: transform 1s cubic-bezier(0.4,0,0.2,1), border-radius 0.2s, box-shadow 0.2s;
-                  will-change: transform;
-                  border-radius: 0 !important;
-                  box-shadow: none !important;
-                }
-            .no-shadow {
-              box-shadow: none !important;
-            }
-        .fade-out {
-          opacity: 0;
-          transition: opacity 0.7s ease;
-          pointer-events: none;
-        }
-        .hide {
-          display: none !important;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A&D | Welcome</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .zoom-letter {
+      z-index: 1000 !important;
+      transition: transform 1s cubic-bezier(0.4,0,0.2,1), border-radius 0.2s, box-shadow 0.2s;
+      will-change: transform;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+    .no-shadow {
+      box-shadow: none !important;
+    }
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+    .hide {
+      display: none !important;
+    }
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-
+    
+    
     body {
       height: 100vh;
       width: 100%;
@@ -40,7 +40,7 @@
       font-family: var(--body-font, serif);
       background-color: #96A085;
     }
-
+    
     .wrapper {
       height: 200px;
       width: 300px;
@@ -53,7 +53,7 @@
       box-shadow: 0 4px 24px rgba(0,0,0,0.08);
       /* border-radius removed to prevent background showing in envelope corners */
     }
-
+    
     .lid {
       position: absolute;
       height: 100%;
@@ -66,7 +66,7 @@
       transform-origin: top;
       transition: transform 0.25s linear;
     }
-
+    
     /* Lid when closed */
     .lid.one {
       border-top: 100px solid #f5f5f5;
@@ -75,7 +75,7 @@
       z-index: 3;
       transition-delay: 0.75s;
     }
-
+    
     /* Lid when opened */
     .lid.two {
       border-top: 100px solid #ffffff;
@@ -83,7 +83,7 @@
       z-index: 1;
       transition-delay: 0.5s;
     }
-
+    
     .envelope {
       position: absolute;
       height: 100%;
@@ -97,7 +97,7 @@
       border-left: 150px solid #eaeaea;
       z-index: 3;
     }
-
+    
     .letter {
       position: absolute;
       top: 0;
@@ -110,7 +110,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       overflow: hidden;
     }
-
+    
     .letter p {
       text-align: center;
       font-size: 30px;
@@ -118,106 +118,106 @@
       color: var(--font-color, #000000);
       font-family: var(--header-font, serif);
     }
-
+    
     .wrapper:hover .lid.one {
-        transform: rotateX(90deg);
-        transition-delay: 0s;
+      transform: rotateX(90deg);
+      transition-delay: 0s;
     }
-
+    
     .wrapper:hover .lid.two {
-        transform: rotateX(180deg);
-        transition-delay: 0.25s;
+      transform: rotateX(180deg);
+      transition-delay: 0.25s;
     }
-
+    
     .wrapper:hover .letter {
       transform: translateY(-50px);
       transition-delay: 0.5s;
     }
-    </style>
+  </style>
 </head>
 <body>
-    <div class="fade-overlay" id="fadeOverlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#EAE4DF;opacity:0;pointer-events:none;z-index:2000;transition:opacity 0.4s;"></div>
-    <div class="wrapper" id="envelope">
-      <div class="lid one" id="lidOne"></div>
-      <div class="lid two" id="lidTwo"></div>
-      <div class="envelope" id="envelopeBack"></div>
-      <div class="letter" id="letter">
-        <img src="images/invite.png" alt="Invitation" style="width:100%;height:auto;border-radius:12px;display:block;margin:auto;" />
-      </div>
+  <div class="fade-overlay" id="fadeOverlay" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#EAE4DF;opacity:0;pointer-events:none;z-index:2000;transition:opacity 0.4s;"></div>
+  <div class="wrapper" id="envelope">
+    <div class="lid one" id="lidOne"></div>
+    <div class="lid two" id="lidTwo"></div>
+    <div class="envelope" id="envelopeBack"></div>
+    <div class="letter" id="letter">
+      <img src="images/invite.png" alt="Invitation" style="width:100%;height:auto;border-radius:12px;display:block;margin:auto;" />
     </div>
-    <script>
-      document.getElementById('envelope').addEventListener('click', function(e) {
-        // Prevent multiple triggers
-        if (document.body.classList.contains('fading')) return;
-
-        var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-        var wrapper = document.getElementById('envelope');
-
-        // On mobile, trigger the hover effect first if not already open
-        if (isMobile && !wrapper.classList.contains('mobile-open')) {
-          wrapper.classList.add('mobile-open');
-          // Simulate hover effect
-          document.getElementById('lidOne').style.transform = 'rotateX(90deg)';
-          document.getElementById('lidOne').style.transitionDelay = '0s';
-          document.getElementById('lidTwo').style.transform = 'rotateX(180deg)';
-          document.getElementById('lidTwo').style.transitionDelay = '0.25s';
-          document.getElementById('letter').style.transform = 'translateY(-50px)';
-          document.getElementById('letter').style.transitionDelay = '0.5s';
-          // Wait for the hover animation to finish before continuing
-          setTimeout(() => {
-            // Now trigger the rest of the animation
-            wrapper.click();
-          }, 600); // match the total hover transition time
-          return;
-        }
-
-        document.body.classList.add('fading');
-        // Reveal the full letter before fading envelope parts
-        var letter = document.getElementById('letter');
-        letter.style.overflow = 'visible';
-        // Fade out all except .letter
-        document.getElementById('lidOne').classList.add('fade-out');
-        document.getElementById('lidTwo').classList.add('fade-out');
-        document.getElementById('envelopeBack').classList.add('fade-out');
-        // Fade the wrapper background and shadow
-        wrapper.style.background = 'transparent';
-        wrapper.classList.add('no-shadow');
-        // After fade, hide them and redirect
+  </div>
+  <script>
+    document.getElementById('envelope').addEventListener('click', function(e) {
+      // Prevent multiple triggers
+      if (document.body.classList.contains('fading')) return;
+      
+      var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+      var wrapper = document.getElementById('envelope');
+      
+      // On mobile, trigger the hover effect first if not already open
+      if (isMobile && !wrapper.classList.contains('mobile-open')) {
+        wrapper.classList.add('mobile-open');
+        // Simulate hover effect
+        document.getElementById('lidOne').style.transform = 'rotateX(90deg)';
+        document.getElementById('lidOne').style.transitionDelay = '0s';
+        document.getElementById('lidTwo').style.transform = 'rotateX(180deg)';
+        document.getElementById('lidTwo').style.transitionDelay = '0.25s';
+        document.getElementById('letter').style.transform = 'translateY(-50px)';
+        document.getElementById('letter').style.transitionDelay = '0.5s';
+        // Wait for the hover animation to finish before continuing
+        setTimeout(() => {
+          // Now trigger the rest of the animation
+          wrapper.click();
+        }, 600); // match the total hover transition time
+        return;
+      }
+      
+      document.body.classList.add('fading');
+      // Reveal the full letter before fading envelope parts
+      var letter = document.getElementById('letter');
+      letter.style.overflow = 'visible';
+      // Fade out all except .letter
+      document.getElementById('lidOne').classList.add('fade-out');
+      document.getElementById('lidTwo').classList.add('fade-out');
+      document.getElementById('envelopeBack').classList.add('fade-out');
+      // Fade the wrapper background and shadow
+      wrapper.style.background = 'transparent';
+      wrapper.classList.add('no-shadow');
+      // After fade, hide them and redirect
+      setTimeout(function() {
+        document.getElementById('lidOne').classList.add('hide');
+        document.getElementById('lidTwo').classList.add('hide');
+        document.getElementById('envelopeBack').classList.add('hide');
+        // Wait 0.5s, then zoom in the letter
         setTimeout(function() {
-          document.getElementById('lidOne').classList.add('hide');
-          document.getElementById('lidTwo').classList.add('hide');
-          document.getElementById('envelopeBack').classList.add('hide');
-          // Wait 0.5s, then zoom in the letter
+          var letter = document.getElementById('letter');
+          // Get bounding rect and viewport size
+          var rect = letter.getBoundingClientRect();
+          var scaleX = window.innerWidth / rect.width;
+          var scaleY = window.innerHeight / rect.height;
+          var scale = Math.max(scaleX, scaleY);
+          // Calculate center of letter and viewport
+          var letterCenterX = rect.left + rect.width / 2;
+          var letterCenterY = rect.top + rect.height / 2;
+          var viewportCenterX = window.innerWidth / 2;
+          var viewportCenterY = window.innerHeight / 2;
+          var translateX = viewportCenterX - letterCenterX;
+          var translateY = viewportCenterY - letterCenterY;
+          // Apply transform
+          letter.classList.add('zoom-letter');
+          letter.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px) scale(' + scale + ')';
+          letter.style.transition = 'transform 1s cubic-bezier(0.4,0,0.2,1), border-radius 0.2s, box-shadow 0.2s';
+          // Start fade overlay earlier in the zoom (0.3s in)
           setTimeout(function() {
-            var letter = document.getElementById('letter');
-            // Get bounding rect and viewport size
-            var rect = letter.getBoundingClientRect();
-            var scaleX = window.innerWidth / rect.width;
-            var scaleY = window.innerHeight / rect.height;
-            var scale = Math.max(scaleX, scaleY);
-            // Calculate center of letter and viewport
-            var letterCenterX = rect.left + rect.width / 2;
-            var letterCenterY = rect.top + rect.height / 2;
-            var viewportCenterX = window.innerWidth / 2;
-            var viewportCenterY = window.innerHeight / 2;
-            var translateX = viewportCenterX - letterCenterX;
-            var translateY = viewportCenterY - letterCenterY;
-            // Apply transform
-            letter.classList.add('zoom-letter');
-            letter.style.transform = 'translate(' + translateX + 'px, ' + translateY + 'px) scale(' + scale + ')';
-            letter.style.transition = 'transform 1s cubic-bezier(0.4,0,0.2,1), border-radius 0.2s, box-shadow 0.2s';
-            // Start fade overlay earlier in the zoom (0.3s in)
-            setTimeout(function() {
-              var overlay = document.getElementById('fadeOverlay');
-              overlay.style.opacity = 1;
-            }, 300);
-            // After zoom animation, redirect
-            setTimeout(function() {
-              window.location.href = 'information.html';
-            }, 1000);
-          }, 500);
-        }, 700);
-      });
-    </script>
-  </body>
+            var overlay = document.getElementById('fadeOverlay');
+            overlay.style.opacity = 1;
+          }, 300);
+          // After zoom animation, redirect
+          setTimeout(function() {
+            window.location.href = 'information.html';
+          }, 1000);
+        }, 500);
+      }, 700);
+    });
+  </script>
+</body>
 </html>
